@@ -1,0 +1,27 @@
+{% set version = "1.5" %}
+
+package:
+  name: dyndom
+  version: {{ version }}
+
+source:
+  url: http://dyndom.cmp.uea.ac.uk/dyndom/DynDom{{ version }}.tar.gz
+  md5: e3f97444ca8c4a8a9beee2490c663db4
+
+requirements:
+  build:
+    - {{ compiler('fortran') }} [unix]
+    - m2w64-gcc-fortran [win]
+
+build:
+  number: 1
+
+test:
+  commands:
+    - "DynDom '' || test $? -eq 2"      # [unix]
+
+about:
+  summary: 'Dynamic Domain Motion Analysis'
+  home: http://dyndom.cmp.uea.ac.uk/dyndom/
+  license: DynDom Download License Agreement
+  license_family: Proprietary
